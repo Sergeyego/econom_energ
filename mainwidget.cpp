@@ -34,7 +34,7 @@ void MainWidget::updNorm()
 
 void MainWidget::repNorm()
 {
-    CubeWidget *w = new CubeWidget(2);
+    CubeWidget *w = new CubeWidget(30);
     w->setRange(ui->dateEditBeg->date(),ui->dateEditEnd->date());
     w->setAttribute(Qt::WA_DeleteOnClose);
     w->show();
