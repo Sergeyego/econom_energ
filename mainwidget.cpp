@@ -13,6 +13,10 @@ MainWidget::MainWidget(QWidget *parent) :
 
     modelNorm = new ModelNorm(this);
     ui->tableViewNorm->setModel(modelNorm);
+    ui->tableViewNorm->setColumnWidth(0,150);
+    for (int i=1; i<ui->tableViewNorm->model()->columnCount(); i++){
+        ui->tableViewNorm->setColumnWidth(i,100);
+    }
 
     connect(ui->dateEditBeg,SIGNAL(dateChanged(QDate)),this,SLOT(updNorm()));
     connect(ui->dateEditEnd,SIGNAL(dateChanged(QDate)),this,SLOT(updNorm()));
