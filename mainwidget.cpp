@@ -43,6 +43,7 @@ void MainWidget::repNorm()
 void MainWidget::repFact()
 {
     CubeWidget *w = new CubeWidget(30);
+    w->setWindowTitle("Фактический расход эл. энергии на производство проволоки, кВтч");
     w->setSum(ui->lineEditKvo->text().toInt());
     w->setRange(ui->dateEditBeg->date(),ui->dateEditEnd->date());
     w->setAttribute(Qt::WA_DeleteOnClose);
