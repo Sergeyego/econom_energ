@@ -51,3 +51,8 @@ QVariant ModelNorm::data(const QModelIndex &index, int role) const
     }
     return DbTableModel::data(index,role);
 }
+
+bool ModelNorm::insertRow(int /*row*/, const QModelIndex &/*parent*/)
+{
+    return false;
+}

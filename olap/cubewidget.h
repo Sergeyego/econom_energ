@@ -18,7 +18,8 @@ public:
     explicit CubeWidget(QString head, QStringList axes, QString qu, int dec, QWidget *parent = 0);
     explicit CubeWidget(int id_cube, QWidget *parent = 0);
     ~CubeWidget();
-    void setRange(QDate beg, QDate end);
+    void setRange(QDate beg, QDate end, bool block=true);
+    void setSum(double s);
     
 private:
     void inital(QString head, QStringList axes, QString qu, int dec);
@@ -28,7 +29,7 @@ private:
     AxisWidget *axisX;
     AxisWidget *axisY;
     int decimal;
-
+    double sum;
 
 private slots:
     void updQuery();

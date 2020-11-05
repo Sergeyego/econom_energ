@@ -53,19 +53,25 @@ CubeWidget::~CubeWidget()
     delete ui;
 }
 
-void CubeWidget::setRange(QDate beg, QDate end)
+void CubeWidget::setRange(QDate beg, QDate end, bool block)
 {
     ui->dateEditBeg->setDate(beg);
     ui->dateEditEnd->setDate(end);
-    ui->dateEditBeg->setReadOnly(true);
-    ui->dateEditEnd->setReadOnly(true);
+    ui->dateEditBeg->setReadOnly(block);
+    ui->dateEditEnd->setReadOnly(block);
     updQuery();
+}
+
+void CubeWidget::setSum(double s)
+{
+    sum=s;
 }
 
 void CubeWidget::inital(QString head, QStringList axes, QString qu, int dec)
 {
     ui = new Ui::CubeWidget;
     ui->setupUi(this);
+    sum=0.0;
     query=qu;
     decimal=dec;
     ui->cmdUpd->setIcon(QIcon(QApplication::style()->standardIcon(QStyle::SP_BrowserReload)));
@@ -105,7 +111,7 @@ void CubeWidget::updQuery()
     QString squery=query;
     squery.replace(":d1","'"+ui->dateEditBeg->date().toString("yyyy-MM-dd")+"'");
     squery.replace(":d2","'"+ui->dateEditEnd->date().toString("yyyy-MM-dd")+"'");
-    olapmodel->setQuery(squery);
+    olapmodel->setQuery(squery,sum);
 }
 
 void CubeWidget::saveXls()

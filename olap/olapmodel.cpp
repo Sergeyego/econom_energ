@@ -65,18 +65,29 @@ QVariant OlapModel::headerData(int section, Qt::Orientation orientation, int rol
     return QAbstractTableModel::headerData(section,orientation,role);
 }
 
-void OlapModel::setQuery(QString query)
+void OlapModel::setQuery(QString query, double sum)
 {
     QSqlQuery qu;
     s_keys vk(n);
     hCube->setN(n);
     qu.prepare(query);
     if(qu.exec()){
+        double sumfact=0.0;
+        if (sum>0){
+            while (qu.next()) {
+               sumfact+=qu.value(n).toDouble();
+            }
+            qu.seek(-1);
+        }
         while (qu.next()) {
             for(int i=0; i<n; i++){
                 vk[i] = qu.value(i).toString() + '\n';
             }
-            hCube->add(vk, qu.value(n).toDouble());
+            double s=qu.value(n).toDouble();
+            if (sum>0 && sumfact!=0.0){
+                s=s*(sum/sumfact);
+            }
+            hCube->add(vk, s);
         }
     } else {
         QMessageBox::critical(NULL,"Error",qu.lastError().text(),QMessageBox::Ok);

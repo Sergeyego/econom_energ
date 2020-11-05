@@ -35,14 +35,15 @@ void MainWidget::updNorm()
 void MainWidget::repNorm()
 {
     CubeWidget *w = new CubeWidget(30);
-    w->setRange(ui->dateEditBeg->date(),ui->dateEditEnd->date());
+    w->setRange(ui->dateEditBeg->date(),ui->dateEditEnd->date(),false);
     w->setAttribute(Qt::WA_DeleteOnClose);
     w->show();
 }
 
 void MainWidget::repFact()
 {
-    CubeWidget *w = new CubeWidget(14);
+    CubeWidget *w = new CubeWidget(30);
+    w->setSum(ui->lineEditKvo->text().toInt());
     w->setRange(ui->dateEditBeg->date(),ui->dateEditEnd->date());
     w->setAttribute(Qt::WA_DeleteOnClose);
     w->show();
