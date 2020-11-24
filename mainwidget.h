@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "modelnorm.h"
 #include "olap/cubewidget.h"
+#include "formfact.h"
 
 namespace Ui {
 class MainWidget;
@@ -25,6 +26,7 @@ private slots:
     void updNorm();
     void repNorm();
     void repFact();
+    void repFactExt();
 };
 
 #endif // MAINWIDGET_H

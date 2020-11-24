@@ -41,7 +41,9 @@ SOURCES += \
     olap/cubewidget.cpp \
     olap/cubic.cpp \
     olap/olapmodel.cpp \
-    olap/tableview.cpp
+    olap/tableview.cpp \
+    modelro.cpp \
+    formfact.cpp
 
 HEADERS += \
         mainwidget.h \
@@ -56,13 +58,16 @@ HEADERS += \
     olap/cubewidget.h \
     olap/cubic.h \
     olap/olapmodel.h \
-    olap/tableview.h
+    olap/tableview.h \
+    modelro.h \
+    formfact.h
 
 FORMS += \
         mainwidget.ui \
     db/dblogin.ui \
     olap/axiswidget.ui \
-    olap/cubewidget.ui
+    olap/cubewidget.ui \
+    formfact.ui
 
 RESOURCES += \
     res.qrc

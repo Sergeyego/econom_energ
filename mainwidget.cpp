@@ -22,6 +22,7 @@ MainWidget::MainWidget(QWidget *parent) :
     connect(ui->dateEditEnd,SIGNAL(dateChanged(QDate)),this,SLOT(updNorm()));
     connect(ui->pushButtonPlan,SIGNAL(clicked(bool)),this,SLOT(repNorm()));
     connect(ui->pushButtonFact,SIGNAL(clicked(bool)),this,SLOT(repFact()));
+    connect(ui->pushButtonFactExt,SIGNAL(clicked(bool)),this,SLOT(repFactExt()));
 
     updNorm();
 }
@@ -52,4 +53,11 @@ void MainWidget::repFact()
     w->setRange(ui->dateEditBeg->date(),ui->dateEditEnd->date());
     w->setAttribute(Qt::WA_DeleteOnClose);
     w->show();
+}
+
+void MainWidget::repFactExt()
+{
+    FormFact *f = new FormFact(ui->dateEditBeg->date(), ui->dateEditEnd->date(), ui->lineEditKvo->text().toInt());
+    f->setAttribute(Qt::WA_DeleteOnClose);
+    f->show();
 }

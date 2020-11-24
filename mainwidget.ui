@@ -87,6 +87,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonFactExt">
+       <property name="text">
+        <string>Отчет подробно</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -97,7 +104,11 @@
     </widget>
    </item>
    <item>
-    <widget class="DbViewer" name="tableViewNorm"/>
+    <widget class="DbViewer" name="tableViewNorm">
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+    </widget>
    </item>
   </layout>
  </widget>
