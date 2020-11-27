@@ -8,7 +8,7 @@
 #include <QFileDialog>
 #include <QHeaderView>
 #include <QDate>
-//#include "dbtablemodel.h"
+#include "dbtablemodel.h"
 
 using namespace QXlsx;
 

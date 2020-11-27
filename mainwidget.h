@@ -5,6 +5,7 @@
 #include "modelnorm.h"
 #include "olap/cubewidget.h"
 #include "formfact.h"
+#include "db/dbxlsx.h"
 
 namespace Ui {
 class MainWidget;
@@ -27,6 +28,7 @@ private slots:
     void repNorm();
     void repFact();
     void repFactExt();
+    void saveNorm();
 };
 
 #endif // MAINWIDGET_H

@@ -23,6 +23,7 @@ MainWidget::MainWidget(QWidget *parent) :
     connect(ui->pushButtonPlan,SIGNAL(clicked(bool)),this,SLOT(repNorm()));
     connect(ui->pushButtonFact,SIGNAL(clicked(bool)),this,SLOT(repFact()));
     connect(ui->pushButtonFactExt,SIGNAL(clicked(bool)),this,SLOT(repFactExt()));
+    connect(ui->pushButtonNorm,SIGNAL(clicked(bool)),this,SLOT(saveNorm()));
 
     updNorm();
 }
@@ -60,4 +61,10 @@ void MainWidget::repFactExt()
     FormFact *f = new FormFact(ui->dateEditBeg->date(), ui->dateEditEnd->date(), ui->lineEditKvo->text().toInt());
     f->setAttribute(Qt::WA_DeleteOnClose);
     f->show();
+}
+
+void MainWidget::saveNorm()
+{
+    DbXlsx x(ui->tableViewNorm,ui->labelNorm->text());
+    x.saveToFile();
 }

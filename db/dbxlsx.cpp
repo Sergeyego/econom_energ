@@ -46,7 +46,7 @@ void DbXlsx::saveToFile()
             }
         }
 
-        //DbTableModel *sqlModel = qobject_cast<DbTableModel *>(viewer->model());
+        DbTableModel *sqlModel = qobject_cast<DbTableModel *>(viewer->model());
 
         for (int i=0;i<rows;i++){
             m=1;
@@ -54,26 +54,26 @@ void DbXlsx::saveToFile()
                 if (!viewer->isColumnHidden(j)) {
                     int role=Qt::EditRole;
                     int dec=3;
-                    /*if (sqlModel){
-                        if (sqlModel->relation(j) || sqlModel->columnType(j)==TYPE_BOOL || sqlModel->columnType(j)==TYPE_INTBOOL || sqlModel->columnType(j)==TYPE_DATE){
+                    if (sqlModel){
+                        if (sqlModel->relation(j) || sqlModel->columnType(j)==QMetaType::QDate || sqlModel->columnType(j)==QMetaType::QDateTime || sqlModel->columnType(j)==QMetaType::Bool){
                             role=Qt::DisplayRole;
                         }
                         if (sqlModel->validator(j)){
                             QDoubleValidator *doublevalidator = qobject_cast<QDoubleValidator*>(sqlModel->validator(j));
                             if (doublevalidator) dec=doublevalidator->decimals();
                         }
-                    }*/
+                    }
 
                     QVariant value=viewer->model()->data(viewer->model()->index(i,j),role);
 
                     if ((value.typeName()==QString("double"))){
-                        //if (!sqlModel){
+                        if (!sqlModel){
                             QString tmp=viewer->model()->data(viewer->model()->index(i,j),Qt::DisplayRole).toString();
                             int pos = tmp.indexOf(QRegExp("[.,]"));
                             if (pos>0){
                                 dec=tmp.size()-pos-1;
                             }
-                        //}
+                        }
                         if (dec>=1){
                             QString fmt=QString("0.%1").arg((0),dec,'d',0,QChar('0'));
                             numFormat.setNumberFormat(fmt);

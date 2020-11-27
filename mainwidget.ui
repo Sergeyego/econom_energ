@@ -74,6 +74,13 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="pushButtonNorm">
+       <property name="text">
+        <string>Сохранить нормы</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="pushButtonPlan">
        <property name="text">
         <string>Отчет план</string>
@@ -97,9 +104,9 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="labelNorm">
      <property name="text">
-      <string>Нормы расхода энергии на производство 1 тонны проволоки, кВт*ч</string>
+      <string>Нормы расхода энергии на производство 1 тонны проволоки, кВтч</string>
      </property>
     </widget>
    </item>
